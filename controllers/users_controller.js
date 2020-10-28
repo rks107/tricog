@@ -1,29 +1,57 @@
 const passport = require('passport');
 const jwt = require("jsonwebtoken");
 const conn = require("../config/mysql");
+const isValidDate = require("../config/dateValidation");
 
 // FOR FETCHING PERTICULER USER BY IT'S ID 
 module.exports.profile = function (req, res) {
   conn.query(
-      `SELECT * FROM user where id = (?)`,
-      [req.params.id],
-      function (err, user) {
-        if(user.length == 0){
-          return res.status(404).json({
-            message: `user with user ID ${req.params.id} is not found.`,
-          });
-        }
-
-        return res.status(200).json({
-          message: `User with user ID ${req.params.id} is Found!`,
-          user: user,
+    `SELECT * FROM user where id = (?) WHERE REGEXP_LIKE(pan_number,'[a-zA-Z]{5}[0-9]{4}[a-zA-Z]');`,
+    [req.params.id],
+    function (err, user) {
+      if (user.length == 0) {
+        return res.status(404).json({
+          message: `user with user ID ${req.params.id} is not found or Invalid PAN Number.`,
         });
-  });
+      }
+
+      return res.status(200).json({
+        message: `User with user ID ${req.params.id} is Found!`,
+        user: user,
+      });
+    }
+  );
 };
 
 
 // SIGNED UP
 module.exports.create = function (req, res) {
+  //PAN CARD VALIDATION
+  let regpan = /^([a-zA-Z]{5})(\d{4})([a-zA-Z]{1})$/;
+  if (regpan.test(req.body.pan_number) == false) {
+    return res.status(404).json({
+      message: "Invalid PAN Number",
+      PAN_Syntax: `it should be in this pattern: [a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z][0-9][0-9][0-9][0-9][a-zA-Z] `,
+    });
+  }
+
+  //DOB VALIDATION
+  if (!isValidDate(req.body.dob)) {
+    return res.status(404).json({
+      message: "Invalid Date or Date Formate",
+      PAN_Syntax: `it should be in this Formate: yyyy-mm-dd`,
+    });
+  }
+
+  //USER GENDER VALIDATION
+  let gender = req.body.gender;
+  if (gender != "male" && gender != "female" && gender != "transgender") {
+    return res.status(404).json({
+      message: "Invalid Gender Input",
+      PAN_Syntax: `Please Enter Gender from these 3 categories: male, female, or transgender`,
+    });
+  }
+
 
   if (req.body.password == req.body.confirm_password) {
     conn.query(
@@ -35,10 +63,16 @@ module.exports.create = function (req, res) {
             message: "Email already exits",
           });
         } else {
-          // const EncryptedPassword = cryptr.encrypt(req.body.password);
           conn.query(
-            `INSERT INTO user (first_name, email, password) VALUES (?, ?, ?);`,
-            [req.body.first_name, req.body.email, req.body.password],
+            `INSERT INTO user (first_name, email, password, pan_number, dob, gender) VALUES (?, ?, ?, ?, ?, ?);`,
+            [
+              req.body.first_name,
+              req.body.email,
+              req.body.password,
+              req.body.pan_number,
+              req.body.dob,
+              req.body.gender,
+            ],
             function (err, user, fields) {
               if (err) throw err;
               else {
