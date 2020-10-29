@@ -46,7 +46,8 @@ Step 4. Install Postman API for API calls (If you don't have)
 
 Step 5. Following are the List of API's for different tasks
 
-    a. For Creating New user
+  a. For Creating New user
+  
     ```
         POST HTTP Method 
         URL- http://localhost:8000/users/create
@@ -57,24 +58,32 @@ Step 5. Following are the List of API's for different tasks
 
         Gender Categories are as follows: male, female, or transgender.
     ```
-    b. For the information about all Users
+    
+   b. For the information about all Users
+   
     ```
         GET HTTP Method 
         URL- http://localhost:8000/users/info
     ```
-    c. For the profile of perticular user
+    
+   c. For the profile of particular user
+   
     ```
         GET HTTP Method 
         URL- http://localhost:8000/users/profile/:id
     ```
-    d. For Creating user Sign-In Session (It is done with the help of JWT Authentication)
+    
+   d. For Creating user Sign-In Session (It is done with the help of JWT Authentication)
+   
     ```
         POST HTTP Method 
         URL- http://localhost:8000/users/create-session
 
         (Here you have to pass the user email and password in the header. You will get an access token which will be useful for creating user sessions so that they can gain access to delete the user profile.)
     ```
-    e. For deleting user profile
+
+  e. For deleting user profile
+  
     ```
         DELETE HTTP Method 
         URL- http://localhost:8000/users/:id
