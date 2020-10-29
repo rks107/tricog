@@ -26,6 +26,15 @@ module.exports.profile = function (req, res) {
 
 // SIGNED UP
 module.exports.create = function (req, res) {
+
+  // FOR CHECKING ALL FIELDS SHOULD BE FILLED
+  if(req.body.first_name == "" || req.body.email == "" || req.body.password == "" || req.body.pan_number == "" || 
+  req.body.dob == "" || req.body.gender == "" || req.body.profile_picture == "") {
+    return res.status(404).json({
+      message: "All Fields are required!",
+    });
+  }
+
   //PAN CARD VALIDATION
   let regpan = /^([a-zA-Z]{5})(\d{4})([a-zA-Z]{1})$/;
   if (regpan.test(req.body.pan_number) == false) {
@@ -64,7 +73,7 @@ module.exports.create = function (req, res) {
           });
         } else {
           conn.query(
-            `INSERT INTO user (first_name, email, password, pan_number, dob, gender) VALUES (?, ?, ?, ?, ?, ?);`,
+            `INSERT INTO user (first_name, email, password, pan_number, dob, gender, profile_picture) VALUES (?, ?, ?, ?, ?, ?, ?);`,
             [
               req.body.first_name,
               req.body.email,
@@ -72,6 +81,7 @@ module.exports.create = function (req, res) {
               req.body.pan_number,
               req.body.dob,
               req.body.gender,
+              req.body.profile_picture,
             ],
             function (err, user, fields) {
               if (err) throw err;
