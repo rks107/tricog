@@ -13,6 +13,14 @@ git clone https://github.com/rks107/tricog.git
 Step 2. Create mySQL database for user
 
 ```
+mySQL database is already created online so no need to create it locally.
+
+You can visite (http://phpmyadmin.co/sql.php?server=1&db=sql12373338&table=user&pos=0) for database verification.
+```
+
+OR
+
+```
 create database tricog;
 
 use  tricog;
@@ -32,6 +40,11 @@ select * from user;
 ```
 
 Step 3. Configure the mysql.js file inside config folder for connecting with localhost database
+```
+No need to change anything. 
+But if you created databse locally then go to the OR section for configuration.
+```
+OR
 
 ```
 var config = {
