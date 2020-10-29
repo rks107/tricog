@@ -1,4 +1,4 @@
-# tricog
+# TRICOG HEALTHCARE
 Nodejs + MySql Task giving by Tricog (Only for code sharing)
 
 # Starting of Project
@@ -19,8 +19,6 @@ Step 3. Create mySQL database for user
 
 ```
 mySQL database is already created online so no need to create it locally.
-
-You can visite (http://phpmyadmin.co/sql.php?server=1&db=sql12373338&table=user&pos=0) for database verification.
 ```
 
 OR
@@ -47,7 +45,7 @@ select * from user;
 Step 4. Configure the mysql.js file inside config folder for connecting with localhost database
 ```
 No need to change anything. 
-But if you created databse locally then go to the OR section for configuration.
+But if you want to create databse locally then go to the OR section for configuration.
 ```
 OR
 
@@ -67,11 +65,24 @@ Step 5. Install Postman API for API calls (If you don't have)
 
 Step 6. Following are the List of API's for different tasks
 
-  6.1 - For Creating New user
+6.1 POSTMAN COLLECTION PUBLIC LINK:
+
+    
+     https://www.getpostman.com/collections/9604f0d8795cb827f128
+    
+   OR
+   
+   <a href="https://www.getpostman.com/collections/9604f0d8795cb827f128">Click Here For POSTMAN collection link </a>
+   
+ 
+  
+6.2  Calls API Through Following Links in your Postman Software
+
+  6.2.1 - For Creating New user
       
      POST HTTP Method 
      
-        URL- http://localhost:8000/users/create
+        URL- http://65.0.124.166:8000/users/create
 
         Pattern For PAN Number and DOB:
         
@@ -81,36 +92,36 @@ Step 6. Following are the List of API's for different tasks
         Gender Categories are as follows: male, female, or transgender.
     
     
-   6.2 - For the information about all Users
+   6.2.2 - For the information about all Users
     
       GET HTTP Method 
       
-        URL- http://localhost:8000/users/info
+        URL- http://65.0.124.166:8000/users/info
     
     
-   6.3 - For the profile of particular user
+   6.2.3 - For the profile of particular user
    
       GET HTTP Method 
       
-        URL- http://localhost:8000/users/profile/:id
+        URL- http://65.0.124.166:8000/users/profile/:id
     
     
-   6.4 - For Creating user Sign-In Session (It is done with the help of JWT Authentication)
+   6.2.4 - For Creating user Sign-In Session (It is done with the help of JWT Authentication)
    
      POST HTTP Method 
      
-        URL- http://localhost:8000/users/create-session
+        URL- http://65.0.124.166:8000/users/create-session
 
         (Here you have to pass the user email and password in the header. 
         You will get an access token which will be useful for creating user sessions 
         so that they can gain access to delete the user profile.)
  
 
-  6.5 - For deleting user profile
+  6.2.5 - For deleting user profile
   
     DELETE HTTP Method 
     
-        URL- http://localhost:8000/users/:id
+        URL- http://65.0.124.166:8000/users/:id
         
         (This call only works when you pass the JWT Access token inside the header section with the 
         authorization as the key and the Bearer JWT_Access_Token as the value. 
