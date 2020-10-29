@@ -15,7 +15,7 @@ Step 2. Install Dependencies by following command:
 npm install
 ```
 
-Step 2. Create mySQL database for user
+Step 3. Create mySQL database for user
 
 ```
 mySQL database is already created online so no need to create it locally.
@@ -44,7 +44,7 @@ profile_picture varchar(500) NOT NULL
 select * from user;
 ```
 
-Step 3. Configure the mysql.js file inside config folder for connecting with localhost database
+Step 4. Configure the mysql.js file inside config folder for connecting with localhost database
 ```
 No need to change anything. 
 But if you created databse locally then go to the OR section for configuration.
@@ -61,13 +61,13 @@ var config = {
 };
 ```
 
-Step 4. Install Postman API for API calls (If you don't have)
+Step 5. Install Postman API for API calls (If you don't have)
 
 <a href="https://www.postman.com/downloads/">Click Here for Download </a>
 
-Step 5. Following are the List of API's for different tasks
+Step 6. Following are the List of API's for different tasks
 
-  5.1 - For Creating New user
+  6.1 - For Creating New user
       
      POST HTTP Method 
      
@@ -81,21 +81,21 @@ Step 5. Following are the List of API's for different tasks
         Gender Categories are as follows: male, female, or transgender.
     
     
-   5.2 - For the information about all Users
+   6.2 - For the information about all Users
     
       GET HTTP Method 
       
         URL- http://localhost:8000/users/info
     
     
-   5.3 - For the profile of particular user
+   6.3 - For the profile of particular user
    
       GET HTTP Method 
       
         URL- http://localhost:8000/users/profile/:id
     
     
-   5.4 - For Creating user Sign-In Session (It is done with the help of JWT Authentication)
+   6.4 - For Creating user Sign-In Session (It is done with the help of JWT Authentication)
    
      POST HTTP Method 
      
@@ -106,7 +106,7 @@ Step 5. Following are the List of API's for different tasks
         so that they can gain access to delete the user profile.)
  
 
-  5.5 - For deleting user profile
+  6.5 - For deleting user profile
   
     DELETE HTTP Method 
     
