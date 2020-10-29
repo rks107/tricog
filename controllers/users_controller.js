@@ -6,7 +6,7 @@ const isValidDate = require("../config/dateValidation");
 // FOR FETCHING PERTICULER USER BY IT'S ID 
 module.exports.profile = function (req, res) {
   conn.query(
-    `SELECT * FROM user where id = (?) WHERE REGEXP_LIKE(pan_number,'[a-zA-Z]{5}[0-9]{4}[a-zA-Z]');`,
+    `SELECT * FROM user where id = (?)`,
     [req.params.id],
     function (err, user) {
       if (user.length == 0) {
@@ -136,11 +136,12 @@ module.exports.destroy = async function (req, res) {
 module.exports.createSession = async function (req, res) {
   try {
     conn.query(
-      `select * from user where email = ? limit 1 `,
+      `select * from user where email = ?`,
       [req.body.email], function(err, user){
         if (user.length == 0 || user[0].password != req.body.password) {
           return res.status(422).json({
             message: "Invalid user or password",
+            user: user
           });
         }
 
