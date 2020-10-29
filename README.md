@@ -56,6 +56,7 @@ Step 5. Following are the List of API's for different tasks
         URL- http://localhost:8000/users/create
 
         Pattern For PAN Number and DOB:
+        
         PAN Number pattern: [a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z][0-9][0-9][0-9][0-9][a-zA-Z]
         DOB Pattern: yyyy/mm/dd
 
@@ -79,9 +80,12 @@ Step 5. Following are the List of API's for different tasks
    5.4 - For Creating user Sign-In Session (It is done with the help of JWT Authentication)
    
      POST HTTP Method 
+     
         URL- http://localhost:8000/users/create-session
 
-        (Here you have to pass the user email and password in the header. You will get an access token which will be useful for creating user sessions so that they can gain access to delete the user profile.)
+        (Here you have to pass the user email and password in the header. 
+        You will get an access token which will be useful for creating user sessions 
+        so that they can gain access to delete the user profile.)
  
 
   5.5 - For deleting user profile
@@ -89,7 +93,9 @@ Step 5. Following are the List of API's for different tasks
     DELETE HTTP Method 
     
         URL- http://localhost:8000/users/:id
-        (This call only works when you pass the JWT Access token inside the header section with the authorization as the key and the Bearer JWT_Access_Token as the value. Otherwise you will get unauthorized as an error message.)
+        (This call only works when you pass the JWT Access token inside the header section with the 
+        authorization as the key and the Bearer JWT_Access_Token as the value. 
+        Otherwise you will get unauthorized as an error message.)
 
 # Project Structure
 
