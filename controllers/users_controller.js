@@ -109,7 +109,6 @@ module.exports.destroy = async function (req, res) {
 
     conn.query(`SELECT * FROM user where id = (?)`, [req.params.id], function (err, user) {
 
-      console.log(user.length);
       if (user.length != 0) {
         conn.query(`DELETE from user where id = ?`, [req.params.id], function(err, user){
           
