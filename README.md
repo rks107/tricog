@@ -10,6 +10,11 @@ Step 1. Clone This Project from GitHub
 git clone https://github.com/rks107/tricog.git
 ```
 
+Step 2. Install Dependencies by following command:
+```
+npm install
+```
+
 Step 2. Create mySQL database for user
 
 ```
