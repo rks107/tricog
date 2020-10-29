@@ -93,6 +93,7 @@ Step 5. Following are the List of API's for different tasks
     DELETE HTTP Method 
     
         URL- http://localhost:8000/users/:id
+        
         (This call only works when you pass the JWT Access token inside the header section with the 
         authorization as the key and the Bearer JWT_Access_Token as the value. 
         Otherwise you will get unauthorized as an error message.)
